@@ -11,9 +11,9 @@
 ```bash
 "tinper-bee": "^2.0.10",
 "bee-message": "^2.0.4", (单独引)
-"pap-refer": "^1.0.2",
-"ref-multiple-table": "^2.0.2",
-"yyuap-bpm": "^0.3.38",
+"pap-refer": "^1.0.2", (平台级参照)
+"ref-multiple-table": "^2.0.2", (基础参照)
+"yyuap-bpm": "^0.3.38", (流程组件里依旧是 还是用苏飞提供的参照)
 ```
 ### 升包内存溢出问题
 
