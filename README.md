@@ -15,8 +15,24 @@
 "ref-multiple-table": "^2.0.2", (基础参照)
 "yyuap-bpm": "^0.3.38", (流程组件里依旧是 还是用苏飞提供的参照)
 ```
-### 升包内存溢出问题
-
+### 升包内存溢出问题 (修改package.json)
+项目开发中，当项目过大的时候，node内存溢出而无法启动工程或者无法build项目，即是项目构建过程中频繁报内存溢出：FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - process out of memory
+> 修改前
+```bash
+"dev": "cross-env NODE_ENV=production uba server --chunks ",
+"build": "cross-env NODE_ENV=production uba build",
+```
+> 修改后
++ window
+```bash
+"dev":"cross-env NODE_ENV=production node --max_old_space_size=9000 ./node_modules/uba-build/bin/uba-server --chunks",
+"build":"cross-env NODE_ENV=production node --max_old_space_size=9000 ./node_modules/uba-build/bin/uba-build -p",
+```
++ mac 
+```bash
+ "dev": "node --max_old_space_size=9000 ./node_modules/.bin/uba-server --chunks",
+ "build":"node --max_old_space_size=9000 ./node_modules/.bin/uba build"
+```
 
 ### 参照
 * 参照组件 [https://design.yonyoucloud.com/tinper-acs/ref-multiple-table](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
