@@ -52,6 +52,39 @@
    import 'pap-refer/dist/index.css
    ```
    * 单表参照示例代码
+   > 升级前
+   ```js
+   <RefWithInput disabled={btnFlag == 2 || (btnFlag == 1 && editFieldFlg != 0)} option={options({
+                                                  title: '客户',
+           refType: 2,//1:树形 2.单表 3.树卡型 4.多选 5.default
+           className: '',
+           param: {//url请求参数
+               refCode: 'xwl_customer',
+               tenantId: '',
+               sysId: '',
+               transmitParam: '2',
+               locale:getCookie('u_locale'),
+           },
+           isRadio:true,//1.true 单选 2.false多选
+           keyList:refKeyArraycustomer_id,//选中的key
+           onSave: function (sels) {
+               console.log(sels);
+               var temp = sels.map(v => v.id)
+               console.log("temp",temp);
+               self.setState({
+                   refKeyArraycustomer_id: temp,
+               })
+           },
+           verShowMessage:'必填',
+           showKey:'name',
+           placeholder:'按客户姓名搜索',
+           showVal:customer_name,
+           verification:true,//是否进行校验
+           verKey:'customer_id',//校验字段
+           verVal:customer_id
+       })} form={this.props.form}/>
+   ```
+   > 升级后   
    ```js
       <RefMultipleTableWithInput
           placeholder="请选择客户" // 参照input placeholder
@@ -83,13 +116,46 @@
               initialValue: `{"refname":"${customer_name}","refpk":"${customer_id}"}`, // 参照初始化值
               rules: [{
                   message: '请输入内容', //  参照验证失败错误提示
-                  pattern: /[^{"refname":"","refpk":""}]/   // 参照验证规则
               }]
           })}
       >
       </RefMultipleTableWithInput>
    ```
     * 左数右表参照示例代码
+    > 升级前
+    ```js
+    <RefWithInput disabled={btnFlag == 2 || (btnFlag == 1 && editFieldFlg != 0)} option={options({
+                                                  title: '部门',
+         refType: 3,//1:树形 2.单表 3.树卡型 4.多选 5.default
+         className: '',
+         isRadio:true,//1.true 单选 2.false多选
+         param: {//url请求参数
+             refCode: 'xwl_dept',
+             tenantId: '',
+             sysId: '',
+             transmitParam: '1',
+             locale:getCookie('u_locale'),
+         },
+         keyList:refKeyArrayorgId,//选中的key
+         onSave: function (sels) {
+             console.log(sels);
+             var temp = sels.map(v => v.id)
+             console.log("temp",temp);
+             self.setState({
+                 refKeyArrayorgId: temp,
+             })
+         },
+         verShowMessage:'必填',
+         showKey:'refname',
+         showVal:orgName,
+         verification:true,//是否进行校验
+         verKey:'orgId',//校验字段
+         verVal:orgId
+     })} form={this.props.form}/>
+
+    ```
+    > 升级后 
+    
    ```js
     <RefTreeTableWithInput
       title='组织部门人员'
