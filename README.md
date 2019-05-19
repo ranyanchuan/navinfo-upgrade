@@ -231,6 +231,27 @@ import FormError from 'components/FormError';  // 项目级组件
       }}
   />
    ```
+
+### 门户
+* 某一wbalone项目 [https://gitee.com/liushaozhen/sany-wbalone/](https://gitee.com/liushaozhen/sany-wbalone/) 
+* 改造后轻量级门户项目[https://github.com/ranyanchuan/reac_ap_fe](https://github.com/ranyanchuan/reac_ap_fe)
+
+### 流程
+* 安装最新流程包 `npm install yyuap-bpm@0.3.38 `
+* 安装最新表格参照 `npm install ref-multiple-table@2.0.2`
+* 添加项目级 BPM (源代码在工程中)
+```js
+banklaon_react/src/components/Bpm/BpmButtonSubmit.js
+banklaon_react/src/components/Bpm/common.js
+banklaon_react/src/components/Bpm/BpmTaskApprovalWrap.js
+```
+* 在 `banklaon_react/src/pages/xml_sale_order/components/SaleOrder-edit/edit.js`中引入项目级 BPM
+```bash
+import {BpmTaskApprovalWrap} from 'yyuap-bpm'; // 只引入 BpmTaskApprovalWrap，去掉之前引入的  BpmButtonSubmit
+import BpmButtonSubmit from "components/Bpm/BpmButtonSubmit";  //项目级 BPM
+import BpmTaskApprovalWrap from "components/Bpm/BpmTaskApprovalWrap";
+
+```
 ##### 单表参照API
 
 参数 | 类型 |默认值| 说明 | 必选
@@ -312,23 +333,3 @@ value、valueFiled value是input需要使用的数据，要求如上。 valueFil
 value、matchData value初始化input框值，matchData是指定参照中选中的节点。如果value有值matchData为空，那么input有值但是参照无选中数据，反之value空值matchData有值，那么input为空但是参照有选中数据
   
 
-### 门户
-* 某一wbalone项目 [https://gitee.com/liushaozhen/sany-wbalone/](https://gitee.com/liushaozhen/sany-wbalone/) 
-* 改造后轻量级门户项目[https://github.com/ranyanchuan/reac_ap_fe](https://github.com/ranyanchuan/reac_ap_fe)
-
-### 流程
-* 安装最新流程包 `npm install yyuap-bpm@0.3.38 `
-* 安装最新表格参照 `npm install ref-multiple-table@2.0.2`
-* 添加项目级 BPM (源代码在工程中)
-```js
-banklaon_react/src/components/Bpm/BpmButtonSubmit.js
-banklaon_react/src/components/Bpm/common.js
-banklaon_react/src/components/Bpm/BpmTaskApprovalWrap.js
-```
-* 在 `banklaon_react/src/pages/xml_sale_order/components/SaleOrder-edit/edit.js`中引入项目级 BPM
-```bash
-import {BpmTaskApprovalWrap} from 'yyuap-bpm'; // 只引入 BpmTaskApprovalWrap，去掉之前引入的  BpmButtonSubmit
-import BpmButtonSubmit from "components/Bpm/BpmButtonSubmit";  //项目级 BPM
-import BpmTaskApprovalWrap from "components/Bpm/BpmTaskApprovalWrap";
-
-```
