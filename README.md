@@ -33,7 +33,44 @@
  "dev": "node --max_old_space_size=9000 ./node_modules/.bin/uba-server --chunks",
  "build":"node --max_old_space_size=9000 ./node_modules/.bin/uba build"
 ```
+### 表单
+> 升级前
+```js
+<Col md={6} xs={6}>
+    <Label>状态：</Label>
+    <FormControl
+        {...getFieldProps('statusEnumValue', {
+                validateTrigger: 'onBlur',
+                initialValue: statusEnumValue || '待处理',
+            }
+        )}
+    />
+    <span className='error'>{getFieldError('status')}</span>
+</Col>
+```
+> 升级后
+```js
+import FormList from 'components/FormList';  // 项目级组件
+import FormError from 'components/FormError';  // 项目级组件
 
+ <FormItem
+    required
+    label="状态"
+    >
+    <FormControl 
+           {...getFieldProps('statusEnumValue', {
+               validateTrigger: 'onBlur',
+               initialValue: statusEnumValue || '',
+               rules: [{
+                  validateTrigger: 'onBlur',
+                  initialValue: statusEnumValue || '待处理',
+               }],
+           })}
+    />
+    <FormError errorMsg={getFieldError('statusEnumValue')}/>
+</FormItem>
+
+```
 ### 参照
 * 参照组件 [https://design.yonyoucloud.com/tinper-acs/ref-multiple-table](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
 
@@ -113,7 +150,6 @@
                   refKeyArraycustomer_id: idArray, // 将选中的id 更新的组件的 state 中
               })
           }}
-
           {...getFieldProps('customer_id', {
               initialValue: `{"refname":"${customer_name}","refpk":"${customer_id}"}`, // 参照初始化值
               rules: [{
