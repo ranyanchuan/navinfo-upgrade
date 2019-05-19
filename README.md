@@ -5,7 +5,7 @@
 ```bash
 "tinper-bee": "1.5.0",
 "yyuap-bpm": "^0.3.20",
-"yyuap-ref": "^1.1.64"
+"yyuap-ref": "^1.1.64",
 ```
 > 升级后
 ```bash
@@ -54,8 +54,10 @@
    * 单表参照示例代码
    > 升级前
    ```js
-   <RefWithInput disabled={btnFlag == 2 || (btnFlag == 1 && editFieldFlg != 0)} option={options({
-                                                  title: '客户',
+   <RefWithInput 
+          disabled={btnFlag == 2 || (btnFlag == 1 && editFieldFlg != 0)}
+          option={options({
+            title: '客户',
            refType: 2,//1:树形 2.单表 3.树卡型 4.多选 5.default
            className: '',
            param: {//url请求参数
