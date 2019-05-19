@@ -33,7 +33,7 @@
  "dev": "node --max_old_space_size=9000 ./node_modules/.bin/uba-server --chunks",
  "build":"node --max_old_space_size=9000 ./node_modules/.bin/uba build"
 ```
-### 表单
+### 表单 (因为改动量很大，四维这次没有升级表达)
 > 升级前
 ```js
 <Col md={6} xs={6}>
@@ -71,7 +71,7 @@ import FormError from 'components/FormError';  // 项目级组件
 </FormItem>
 
 ```
-### 参照
+### 参照 (参照不够灵活，例如用户不能修改 table中行高、纵向滚动条等属性)
 * 参照组件 [https://design.yonyoucloud.com/tinper-acs/ref-multiple-table](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
 
 * 参照demo
@@ -88,7 +88,7 @@ import FormError from 'components/FormError';  // 项目级组件
    import {RefMultipleTableWithInput,RefTreeTableWithInput} from 'pap-refer';
    import 'pap-refer/dist/index.css
    ```
-   * 单表参照示例代码
+   * 单表参照示例代码 ()
    > 升级前
    ```js
    <RefWithInput 
@@ -192,7 +192,7 @@ import FormError from 'components/FormError';  // 项目级组件
      })} form={this.props.form}/>
 
     ```
-    > 升级后 
+    > 升级后 (无法修改title，新版本bug已经修复)
     
    ```js
     <RefTreeTableWithInput
@@ -232,11 +232,11 @@ import FormError from 'components/FormError';  // 项目级组件
   />
    ```
 
-### 门户
+### 门户 (四维将抽屉菜单自定义为 menu菜单、类似某一项目)
 * 某一wbalone项目 [https://gitee.com/liushaozhen/sany-wbalone/](https://gitee.com/liushaozhen/sany-wbalone/) 
 * 改造后轻量级门户项目[https://github.com/ranyanchuan/reac_ap_fe](https://github.com/ranyanchuan/reac_ap_fe)
 
-### 流程
+### 流程(本次流程升级封装到项目级，四维对流程要自定义) 
 * 安装最新流程包 `npm install yyuap-bpm@0.3.38 `
 * 安装最新表格参照 `npm install ref-multiple-table@2.0.2`
 * 添加项目级 BPM (源代码在工程中)
