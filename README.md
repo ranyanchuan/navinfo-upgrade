@@ -41,7 +41,13 @@
     <FormControl
         {...getFieldProps('statusEnumValue', {
                 validateTrigger: 'onBlur',
-                initialValue: statusEnumValue || '待处理',
+                initialValue: status || '待处理',
+                rules: [{
+                       type: 'string',
+                       required: false,
+                       pattern: /\S+/ig,
+                       message: '请输入状态',
+                   }],
             }
         )}
     />
@@ -60,14 +66,16 @@ import FormError from 'components/FormError';  // 项目级组件
     <FormControl 
            {...getFieldProps('statusEnumValue', {
                validateTrigger: 'onBlur',
-               initialValue: statusEnumValue || '',
-               rules: [{
-                  validateTrigger: 'onBlur',
-                  initialValue: statusEnumValue || '待处理',
-               }],
+               initialValue: status || '',
+              rules: [{
+                       type: 'string',
+                       required: true,
+                       pattern: /\S+/ig,
+                       message: '请输入状态',
+                   }],
            })}
     />
-    <FormError errorMsg={getFieldError('statusEnumValue')}/>
+    <FormError errorMsg={getFieldError('status')}/>
 </FormItem>
 
 ```
