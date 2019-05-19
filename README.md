@@ -33,7 +33,7 @@
  "dev": "node --max_old_space_size=9000 ./node_modules/.bin/uba-server --chunks",
  "build":"node --max_old_space_size=9000 ./node_modules/.bin/uba build"
 ```
-### 表单 (因为改动量很大，四维这次没有升级表达)
+### 表单 (因为改动量很大，四维这次没有升级Form表单)
 > 升级前
 ```js
 <Col md={6} xs={6}>
@@ -74,14 +74,14 @@ import FormError from 'components/FormError';  // 项目级组件
 ### 参照 (参照不够灵活，例如用户不能修改 table中行高、纵向滚动条等属性)
 * 参照组件 [https://design.yonyoucloud.com/tinper-acs/ref-multiple-table](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
 
-* 参照demo
+* pap-refer参照demo
   + 先登录 (admin/123qwe)
     [http://refdemo.app.yyuap.com/wbalone/pages/login/login.html?r=L3diYWxvbmUv](http://refdemo.app.yyuap.com/wbalone/pages/login/login.html?r=L3diYWxvbmUv)
 
   + 再访问
     [http://refdemo.app.yyuap.com/dist/ucf-publish/iuap-pap-demo-fe/ref-demo/index.html](http://refdemo.app.yyuap.com/dist/ucf-publish/iuap-pap-demo-fe/ref-demo/index.html)
 * 参照 pap-refer (基于应用平台和基本参照组件封装的应用级参照组件，暂时无对外文档)
-* 项目参照
+* 四维项目参照
    * 安装 pap-refer `npm install pap-refer@1.0.2
    * 引入参照组件和样式
    ```js
@@ -232,7 +232,7 @@ import FormError from 'components/FormError';  // 项目级组件
   />
    ```
 
-### 门户 (四维将抽屉菜单自定义为 menu菜单、类似某一项目)
+### 门户 (四维将抽屉菜单自定义为 menu菜单、类似某一重工项目)
 * 某一wbalone项目 [https://gitee.com/liushaozhen/sany-wbalone/](https://gitee.com/liushaozhen/sany-wbalone/) 
 * 改造后轻量级门户项目[https://github.com/ranyanchuan/reac_ap_fe](https://github.com/ranyanchuan/reac_ap_fe)
 
@@ -251,6 +251,27 @@ import {BpmTaskApprovalWrap} from 'yyuap-bpm'; // 只引入 BpmTaskApprovalWrap�
 import BpmButtonSubmit from "components/Bpm/BpmButtonSubmit";  //项目级 BPM
 import BpmTaskApprovalWrap from "components/Bpm/BpmTaskApprovalWrap";
 
+```
+
+### 消息弹框提示
+>修改前
+```js
+ Message.create({content: error.msg, color: 'danger'});
+```
+> 修改后 (width )
+```js
+//顶上显示时距顶部的位置, 宽不支持100%
+Message.config({top: 0，width:500});  
+ Message.create({content: error.msg, color: 'danger'});
+```
+### tinper 样式引入(app.js文件中)
+> 升级前
+```js
+import 'static/trd/tineper-bee/assets/tinper-bee.css'
+```
+> 升级后
+```js
+import 'tinper-bee/assets/tinper-bee.css';
 ```
 ##### 单表参照API
 
